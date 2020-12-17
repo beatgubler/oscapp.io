@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <a class="navbar-brand" *ngIf="!_auth.currentUserValue" routerLink="/"><img src="favicon.ico"> oscapp.io</a>
+  <a class="navbar-brand" *ngIf="_auth.currentUserValue" routerLink="/home"><img src="favicon.ico"> oscapp.io</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="_auth.currentUserValue" routerLink="/chat" routerLinkActive="active">Chat</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="_auth.currentUserValue" routerLink="/settings" routerLinkActive="active">Settings</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="_auth.isAdmin" routerLink="/admin" routerLinkActive="active">Admin</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="!_auth.currentUserValue" routerLink="/login" routerLinkActive="active">Login</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="!_auth.currentUserValue" routerLink="/register" routerLinkActive="active">Register</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" *ngIf="_auth.currentUserValue" style="cursor:pointer" (click)="logoutUser()">Logout</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link disabled" *ngIf="_auth.currentUserValue">Logged in as: <b>{{user}}</b></a>
+      </li>
+    </ul>
+  </div>
+  
+</nav>

@@ -1,0 +1,80 @@
+<div *ngIf="_auth.currentUserValue">
+  <div class="container-sm">
+    <div class="p-3">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <form class="form" #emailForm="ngForm">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col">
+                      <label>Change Username</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" [(ngModel)]="settingsData.email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-auto pl-0">
+                      <button [disabled]="emailForm.form.invalid" type="submit" class="btn btn-success float-right" (click)="changeEmail()">save</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <form class="form" #passwordForm="ngForm">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col">
+                      <label>Change Password</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <input type="password" [(ngModel)]="settingsData.password" name="password" class="form-control" required>
+                    </div>
+                    <div class="col-auto pl-0">
+                      <button [disabled]="passwordForm.form.invalid" type="submit" class="btn btn-success float-right" (click)="changePassword()">save</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <form class="form" #avatarForm="ngForm">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col">
+                      <label>Change Avatar</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-auto pr-0">
+                      <img src="{{serverUrl}}/api/avatar/{{settingsData.avatar}}" style="height: 50px">
+                    </div>
+                    <div class="col">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" (change)="onFileSelected($event)" required>
+                        <label #fileUpload class="custom-file-label" for="customFile">{{uploadText}}</label>
+                      </div>
+                      <p style="font-size:10px">Resolution: 50x50px | Allowed: .png .jpeg .jpg .gif | Max. 2MB</p>
+                    </div>
+                    <div class="col-auto pl-0">
+                      <button [disabled]="!selectedFile" type="button" class="btn btn-success float-right" (click)="onUpload()">save</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div *ngFor="let message of messages">
+            <div *ngIf="message.type == 'success'" class="mt-2 alert alert-success">{{message.text}}</div>
+            <div *ngIf="message.type == 'danger'" class="mt-2 alert alert-danger">{{message.text}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
