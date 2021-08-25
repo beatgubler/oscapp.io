@@ -17,7 +17,7 @@ The Server/API can be found here: https://github.com/beatgubler/oscapp.io-server
 * RESTful API
 
 
-#### Livepreview: [https://chat.gubler-it.com](https://chat.gubler-it.com) -> temporarily offline!
+#### Livepreview: [https://chat.gubler-it.com](https://chat.gubler-it.com)
 ![Version](https://img.shields.io/badge/Version-v0.8.3-green)
 Optimized for Angular 9.1.1 & Node 12.16.2
 
